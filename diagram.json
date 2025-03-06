@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "led_merah", "top": 50, "left": 200, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "led_kuning", "top": 100, "left": 200, "attrs": { "color": "yellow" } },
+    { "type": "wokwi-led", "id": "led_hijau", "top": 150, "left": 200, "attrs": { "color": "green" } },
+    { "type": "wokwi-pushbutton", "id": "btn_merah", "top": 50, "left": 300, "attrs": { "color": "red", "label": "Mode 1" } },
+    { "type": "wokwi-pushbutton", "id": "btn_kuning", "top": 100, "left": 300, "attrs": { "color": "yellow", "label": "Mode 2" } },
+    { "type": "wokwi-pushbutton", "id": "btn_hijau", "top": 150, "left": 300, "attrs": { "color": "green", "label": "Mode 3" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 50, "left": 250, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 100, "left": 250, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "r3", "top": 150, "left": 250, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    
+    [ "esp:GND.1", "led_merah:C", "black", [] ],
+    [ "esp:GND.1", "led_kuning:C", "black", [] ],
+    [ "esp:GND.1", "led_hijau:C", "black", [] ],
+    
+    [ "esp:D18", "r1:1", "red", [] ],
+    [ "r1:2", "led_merah:A", "red", [] ],
+    
+    [ "esp:D19", "r2:1", "yellow", [] ],
+    [ "r2:2", "led_kuning:A", "yellow", [] ],
+    
+    [ "esp:D21", "r3:1", "green", [] ],
+    [ "r3:2", "led_hijau:A", "green", [] ],
+    
+    [ "esp:D12", "btn_merah:1.l", "red", [] ],
+    [ "btn_merah:2.l", "esp:GND.2", "black", [] ],
+    
+    [ "esp:D14", "btn_kuning:1.l", "yellow", [] ],
+    [ "btn_kuning:2.l", "esp:GND.2", "black", [] ],
+    
+    [ "esp:D27", "btn_hijau:1.l", "green", [] ],
+    [ "btn_hijau:2.l", "esp:GND.2", "black", [] ]
+  ],
+  "dependencies": {}
+}
